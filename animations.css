@@ -1,0 +1,66 @@
+/* All CSS animations and hover transitions live in this file */
+
+.btn {
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:disabled {
+  transform: none;
+}
+
+.card {
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+/* Hero scanner line animation */
+.scan {
+  position: absolute;
+  left: 15%;
+  width: 70%;
+  height: 92%;
+  bottom: 0;
+  overflow: hidden;
+  border-radius: 999px 999px 24px 24px;
+  pointer-events: none;
+}
+
+.scan i {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(234, 240, 244, 0) 0%,
+    rgba(234, 240, 244, 0.16) 85%,
+    rgba(234, 240, 244, 0.36) 100%
+  );
+  border-bottom: 2px solid var(--paper);
+  animation: scan 4s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+@keyframes scan {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Respect user reduced-motion setting */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
